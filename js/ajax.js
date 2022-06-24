@@ -12,7 +12,7 @@ function findAllProduct() {
     })
 }
 function display(data) {
-    let content = `<tr>
+    let content = `<tr style="text-align: center">
                         <th>ID</th>
                         <th>Name</th>
                         <th>Price</th>
@@ -28,7 +28,7 @@ function display(data) {
     show.innerHTML = content;
 }
 function getProduct(product) {
-    return `<tr>
+    return `<tr style="text-align: center">
             <td>${product.id}</td>
 
             <td>${product.name}</td>
@@ -37,7 +37,7 @@ function getProduct(product) {
 
             <td>${product.quantity}</td>
 
-            <td><button onclick="showEditForm(${product.id})" class=>Edit</button></td>       <!--//Nhấn nút gọi sự kiện trong onclick => xuống hàm showEditForm -->
+            <td><button onclick="showEditForm(${product.id})" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="text-align: center">Edit</button></td>       <!--//Nhấn nút gọi sự kiện trong onclick => xuống hàm showEditForm -->
 
             <td><button onclick="deleteProduct(${product.id})">Delete</button></td>    <!--//Nhấn nút gọi sự kiện trong onclick => xuống hàm deleteProduct -->
             <br>
@@ -85,13 +85,13 @@ function showEditForm(id) {
         url: 'http://localhost:8080/products/' + id,                               //lấy dữ liệu từ bên controller
         success: function (product) {                                             //product được binding từ controller qua ( id thành đối tượng )
             console.log("vao day không" + product)
-            let str = `
-                    <input  value="${product.name}" id="name">
-                <input value="${product.price}" id="price">
-                <input value="${product.quantity}" id="quantity">
-                <button onclick="update(${product.id})">Edit</button>`                //Sau khi nhấn nút Edit gọi đến sự kiện trong onclick rồi vào hàm update
-
-            edit.innerHTML = str;
+            // let str = `
+            //         <input  value="${product.name}" id="name">
+            //     <input value="${product.price}" id="price">
+            //     <input value="${product.quantity}" id="quantity">
+            //     <button onclick="update(${product.id})" >Edit</button>`                //Sau khi nhấn nút Edit gọi đến sự kiện trong onclick rồi vào hàm update
+            //
+            // edit.innerHTML = str;
         },
         error: function (error) {
             console.log(error)
